@@ -1,0 +1,51 @@
+<div class="grid grid-cols-6 gap-6">
+    <div class="col-span-6 sm:col-span-3">
+        <app-form-field
+            label="Nombre"
+            placeholder="Juan"
+            [control]="firstName"
+        />
+    </div>
+
+    <div class="col-span-6 sm:col-span-3">
+        <app-form-field
+            label="Apellido Paterno"
+            placeholder="Perez"
+            [control]="lastNamePaternal"
+        />
+    </div>
+
+    <div class="col-span-6 sm:col-span-3">
+        <app-form-field
+            label="Apellido Materno"
+            placeholder="Perez"
+            [control]="lastNameMaternal"
+        />
+    </div>
+
+    <div class="col-span-6 sm:col-span-3">
+        <app-form-field
+            label="Teléfono"
+            placeholder="0000000000"
+            [control]="phone"
+        />
+    </div>
+
+    <div class="col-span-6">
+        <app-form-field
+            label="Dirección"
+            placeholder="Av. Torres #15, Ciudad de México"
+            [control]="address"
+        />
+    </div>
+
+    <div class="col-span-6 text-end">
+        <button
+            (click)="onSubmit()"
+            type="button"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+        >
+            Guardar
+        </button>
+    </div>
+</div>
