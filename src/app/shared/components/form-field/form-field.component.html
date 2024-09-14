@@ -1,0 +1,11 @@
+<label class="block text-sm font-medium mb-1">{{ label }}</label>
+<input
+    [type]="type"
+    [formControl]="control"
+    [placeholder]="placeholder"
+    class="w-full border rounded p-2"
+/>
+
+@if(control.invalid && control.touched) {
+<small class="text-red-500">{{ errorMessage }}</small>
+}
