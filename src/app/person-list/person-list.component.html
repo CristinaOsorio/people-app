@@ -32,6 +32,7 @@
         </div>
         <div>
             <button
+                (click)="openModalForm()"
                 type="button"
                 class="inline-flex text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-4 py-2 text-center me-2 mb-2"
             >
@@ -62,11 +63,12 @@
                     </li>
                 </ul>
                 <div class="py-1">
-                    <a
+                    <button
                         href="#"
                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        >Delete Person</a
                     >
+                        Delete Person
+                    </button>
                 </div>
             </div>
         </div>
@@ -98,6 +100,7 @@
         </thead>
         <tbody>
             @for (person of persons; track $index) {
+
             <tr class="bg-white border-b hover:bg-gray-50">
                 <td class="w-4 p-4">
                     <div class="flex items-center">
@@ -106,7 +109,9 @@
                             type="checkbox"
                             class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
                         />
-                        <label for="checkbox-table-search-1" class="sr-only"
+                        <label
+                            for="checkbox-table-search-{{ $index }}"
+                            class="sr-only"
                             >checkbox</label
                         >
                     </div>
@@ -122,16 +127,22 @@
                 </td>
                 <td class="px-6 py-4">
                     <button
+                        (click)="openModalForm(person)"
                         type="button"
                         class="font-medium text-blue-600 mr-4"
                     >
                         Editar
                     </button>
-                    <button type="button" class="font-medium text-red-600">
+                    <button
+                        (click)="openModalDelete(person)"
+                        type="button"
+                        class="font-medium text-red-600"
+                    >
                         Eliminar
                     </button>
                 </td>
             </tr>
+
             }
         </tbody>
     </table>
@@ -166,7 +177,7 @@
             <li>
                 <button
                     type="button"
-                    class="flex items-center justify-center px-6 h-9 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700"
+                    class="flex items-center justify-center px-3 h-9 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700"
                 >
                     Siguiente
                 </button>
@@ -174,3 +185,13 @@
         </ul>
     </nav>
 </div>
+
+@if (isOpenModalForm) {
+<app-modal [title]="titleModal" (isClose)="this.isOpenModalForm = false">
+    <app-person-form [person]="selectedPerson" (data)="saveChanges($event)" />
+</app-modal>
+} @if (isOpenModalDelete && selectedPerson) {
+<app-modal [title]="titleModal" (isClose)="this.isOpenModalDelete = false">
+    <app-person-delete [person]="selectedPerson" (data)="saveDelete($event)" />
+</app-modal>
+}
