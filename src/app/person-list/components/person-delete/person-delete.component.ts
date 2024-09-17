@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Person } from '../../../core/interfaces/person.interface';
+import { PersonService } from '../../../core/services/person.service';
 
 @Component({
     selector: 'app-person-delete',
@@ -11,8 +12,11 @@ import { Person } from '../../../core/interfaces/person.interface';
 export class PersonDeleteComponent {
     @Input({ required: true }) person!: Person;
     @Output() data = new EventEmitter<boolean>();
+    personService = inject(PersonService);
 
     deletePerson() {
-        this.data.emit(true);
+        this.personService
+            .delete(this.person.id)
+            .subscribe((data) => this.data.emit(true));
     }
 }

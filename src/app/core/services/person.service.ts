@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Person, PersonCreate } from '../interfaces/person.interface';
 import { PaginatedResponse } from '../interfaces/paginate.interface';
-import { handleError } from '../handles/errosr.handle';
+import { handleError } from '../handles/errors.handle';
 
 @Injectable({
     providedIn: 'root',
