@@ -1,27 +1,92 @@
-# PeopleApp
+# Proyecto de Gestión de Personas - Front-End
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.2.
+Este repositorio contiene el front-end para la aplicación de gestión de personas. Está construido utilizando Angular y Tailwind CSS, y proporciona una interfaz para interactuar con la API del back-end, permitiendo la visualización, creación, edición y eliminación de registros de personas mediante modales.
 
-## Development server
+## Índice
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+-   [Características](#características)
+-   [Tecnologías](#tecnologías)
+-   [Instalación](#instalación)
+-   [Uso](#uso)
 
-## Code scaffolding
+## Características
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+-   **Visualización de Personas**: Página principal que lista todos los registros de personas.
+-   **Creación de Personas**: Modal para agregar nuevos registros de personas.
+-   **Edición de Personas**: Modal para actualizar los datos de los registros existentes.
+-   **Eliminación de Personas**: Modal para eliminar registros de personas.
+-   **Paginación y Filtrado**: Opciones para paginar y filtrar la lista de personas.
 
-## Build
+## Tecnologías
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+-   **Angular**: Framework para construir la interfaz de usuario.
+-   **Tailwind CSS**: Biblioteca de utilidades para estilos y diseño.
+-   **TypeScript**: Lenguaje de programación utilizado en el desarrollo.
+-   **RxJS**: Biblioteca para la gestión de eventos y programación reactiva.
+-   **HttpClient**: Módulo de Angular para realizar solicitudes HTTP a la API.
 
-## Running unit tests
+## Instalación
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+1. **Clonar el repositorio:**
 
-## Running end-to-end tests
+    ```bash
+    git clone https://github.com/CristinaOsorio/people-app
+    ```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2. **Navegar al directorio del proyecto:**
 
-## Further help
+    ```bash
+    cd people-app
+    ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+3. **Instalar `nvm` (Node Version Manager) [Opcional]:**
+
+    Si prefieres usar `nvm` para gestionar versiones de Node.js, sigue las instrucciones en la [documentación oficial de nvm](https://github.com/nvm-sh/nvm#installing-and-updating) para instalarlo.
+
+    Luego, instala la versión recomendada de Node.js especificada en el archivo `.nvmrc`:
+
+    ```bash
+    nvm install
+    ```
+
+    Asegúrate de usar la versión correcta con:
+
+    ```bash
+    nvm use
+    ```
+
+    **Nota:** Si no utilizas `nvm`, asegúrate de tener la versión recomendada de Node.js instalada. La versión requerida está especificada en el archivo `.nvmrc`.
+
+4. **Instalar las dependencias:**
+
+    ```bash
+    npm install
+    ```
+
+5. **Configurar la URL de la API:**
+
+    Edita el archivo `src/environments/environment.ts` y configura la URL de la API:
+
+    ```typescript
+    export const environment = {
+        production: false,
+        apiUrl: 'http://localhost:3000',
+    };
+    ```
+
+6. **Iniciar el servidor de desarrollo:**
+
+    ```bash
+    ng serve
+    ```
+
+    La aplicación estará disponible en `http://localhost:4200`.
+
+## Uso
+
+Una vez que el servidor esté en funcionamiento, puedes interactuar con la aplicación en la página principal en `http://localhost:4200/person`. Desde allí, puedes:
+
+-   **Ver la lista de personas**: La página principal muestra una lista de todas las personas almacenadas en la base de datos.
+-   **Crear una nueva persona**: Usa el modal de creación para agregar una nueva persona a la base de datos.
+-   **Editar una persona existente**: Usa el modal de edición para actualizar los detalles de una persona seleccionada.
+-   **Eliminar una persona**: Usa el modal de eliminación para eliminar una persona seleccionada.
