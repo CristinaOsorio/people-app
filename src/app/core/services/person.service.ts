@@ -5,12 +5,13 @@ import { catchError } from 'rxjs/operators';
 import { Person, PersonCreate } from '../interfaces/person.interface';
 import { PaginatedResponse } from '../interfaces/paginate.interface';
 import { handleError } from '../handles/errors.handle';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
 })
 export class PersonService {
-    private apiUrl = 'http://localhost:3000/api/persons';
+    private apiUrl = `${environment.apiUrl}/api/persons`;
     private http = inject(HttpClient);
     private httpOptions = {
         headers: new HttpHeaders({
