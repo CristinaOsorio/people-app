@@ -22,6 +22,9 @@ export class FormFieldComponent {
             if (this.control.errors['minlength']) {
                 return `${this.label} debe tener al menos ${this.control.errors['minlength'].requiredLength} caracteres.`;
             }
+            if (this.control.errors['maxlength']) {
+                return `${this.label} debe tener máximo ${this.control.errors['maxlength'].requiredLength} caracteres.`;
+            }
             if (this.control.errors['pattern']) {
                 return `Formato de ${this.label} inválido.`;
             }
